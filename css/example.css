@@ -1,0 +1,58 @@
+body {
+    background-color: #1e1e1e;
+}
+
+.var-highlight {
+    color: #4d9cd6;
+  }
+  
+  .string-highlight {
+    color: rgba(253, 149, 90, 0.8);
+  }
+  .object {
+      color: #9cdcfe;
+  }
+  .equal {
+      color: #ffffff;
+  }
+  .paranthesis {
+      color: #f1d700;
+  }
+  .objectProp {
+      color: #9cdcfe;
+  }
+  .array {
+      color: #da70d6;
+  }
+  pre {
+      color: #ffffff;
+  }
+  #typewriter {
+    font-size: 2em;
+    margin: 0;
+    font-family: "Courier New";
+    margin-top: 10%;
+    margin-left: 4%;
+  }
+  #typewriter:after {
+    content: "|";
+    -webkit-animation: blink 500ms linear infinite alternate;
+            animation: blink 500ms linear infinite alternate;
+  }
+  
+  @-webkit-keyframes blink {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes blink {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }

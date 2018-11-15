@@ -12,18 +12,20 @@
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/bootstrap/css/styles.css" rel="stylesheet">
+
 
     <!-- Custom styles for this template -->
-    <link href="css/full.css" rel="stylesheet">
+    <link href="css/example.css" rel="stylesheet">
 
   </head>
 
   <body>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="#">Start Bootstrap</a>
+        <a class="navbar-brand" href="#">Alyssa</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -48,12 +50,95 @@
       </div>
     </nav>
 
-    <!-- Page Content -->
+    <!-- Page Content 
+    <p class="line-1 anim-typewriter">Hi, I'm Alyssa and I'm a UI Engineer.</p>
+    <p class="line-2 anim-typewriter2">I specialize in creating clean & modern interfaces</p>
+    <p class="line-3 anim-typewriter3">that boast organized, efficient code.</p>-->
 
+    <pre id="typewriter">
+        <span class="var-highlight">var</span> <span class="object">object</span><span class="equal"> =</span> <span class="paranthesis">{</span>
+           <span class="objectProp"> name:</span> <span class="string-highlight">'Alyssa Durante'</span>,
+           <span class="objectProp"> occupation:</span>  <span class="string-highlight">'UI Engineer'</span>,
+           <span class="objectProp"> location:</span> <span class="string-highlight">'NYC'</span>,
+           <span class="objectProp"> specialties:</span> <span class="array">[</span><span class="string-highlight">'Modern interfaces'</span>,
+                        <span class="string-highlight">'Clean code'</span>,
+                        <span class="string-highlight">'Being awesome'</span><span class="array">]</span>;
+        <span class="paranthesis">}</span>; </pre>
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script>
+function setupTypewriter(t) {
+    var HTML = t.innerHTML;
 
+    t.innerHTML = "";
+
+    var cursorPosition = 0,
+        tag = "",
+        writingTag = false,
+        tagOpen = false,
+        typeSpeed = 100,
+    tempTypeSpeed = 0;
+
+    var type = function() {
+    
+        if (writingTag === true) {
+            tag += HTML[cursorPosition];
+        }
+
+        if (HTML[cursorPosition] === "<") {
+            tempTypeSpeed = 0;
+            if (tagOpen) {
+                tagOpen = false;
+                writingTag = true;
+            } else {
+                tag = "";
+                tagOpen = true;
+                writingTag = true;
+                tag += HTML[cursorPosition];
+            }
+        }
+        if (!writingTag && tagOpen) {
+            tag.innerHTML += HTML[cursorPosition];
+        }
+        if (!writingTag && !tagOpen) {
+            if (HTML[cursorPosition] === " ") {
+                tempTypeSpeed = 30;
+            }
+            else {
+                tempTypeSpeed = (Math.random() * typeSpeed) + 70;
+            }
+            t.innerHTML += HTML[cursorPosition];
+        }
+        if (writingTag === true && HTML[cursorPosition] === ">") {
+            tempTypeSpeed = (Math.random() * typeSpeed) + 70;
+            writingTag = false;
+            if (tagOpen) {
+                var newSpan = document.createElement("span");
+                t.appendChild(newSpan);
+                newSpan.innerHTML = tag;
+                tag = newSpan.firstChild;
+            }
+        }
+
+        cursorPosition += 1;
+        if (cursorPosition < HTML.length - 1) {
+            setTimeout(type, tempTypeSpeed);
+        }
+
+    };
+
+    return {
+        type: type
+    };
+}
+
+var typer = document.getElementById('typewriter');
+
+typewriter = setupTypewriter(typewriter);
+
+typewriter.type();
+</script>
   </body>
 
 </html>
